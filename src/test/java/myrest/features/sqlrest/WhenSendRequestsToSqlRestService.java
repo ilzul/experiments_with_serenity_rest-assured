@@ -31,15 +31,36 @@ public class WhenSendRequestsToSqlRestService {
     @Test
     public void shouldCreateCustomerWithID() {
         int id = Math.abs(new Random().nextInt());
-        Customer customer = new Customer(id);
+        Customer customer = getCustomer();
+        customer.setId(id);
         restSteps.postCustomerWithID(customer);
         restSteps.getCustomerWithID(id);
     }
 
     @Test
     public void shouldUpdateCustomerWithID() {
-        Customer customer = new Customer(1);
+        Customer customer = getCustomer();
         restSteps.putCustomerWithID(customer);
+    }
+
+    private Customer getCustomer() {
+        final int id=1;
+        final String firstName="fname";
+        final String lastName="lname";
+        final String street="street";
+        final String city="city";
+        return new Customer(id,firstName,lastName,street,city);
+    }
+
+    @Test
+    public void shouldDeleteCustomerWithID() {
+        int id = Math.abs(new Random().nextInt());
+        Customer customer = getCustomer();
+        customer.setId(id);
+        restSteps.postCustomerWithID(customer);
+        restSteps.getCustomerWithID(id);
+        restSteps.deleteCustomerWithID(id);
+        restSteps.getNonExistingCustomerWithID(id);
     }
 
 }
