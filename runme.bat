@@ -1,0 +1,1 @@
+mvn clean verify && start ./target/site/serenity/index.html

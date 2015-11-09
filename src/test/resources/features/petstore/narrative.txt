@@ -1,0 +1,1 @@
+To verify the http://petstore.swagger.io/v2/pet services using rest-assured
